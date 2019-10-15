@@ -1,8 +1,9 @@
-//import express from 'express';
-const express = require('express') //Older style
 const path = require('path')
 const app = express();
 const hbs = require('hbs')
+
+const express = require('express')
+const port = process.env.PORT || 3000   //Heroku provide port through process.env.PORT
 
 //setting up directory path
 const publicDirPath = path.join(__dirname, '../public')
@@ -25,6 +26,6 @@ app.get('', (req, res) => {
 })
 
 //setting server port
-app.listen(3000, () => {
-    console.log("Server is running on port 3000")
+app.listen(port, () => {
+    console.log("Server is running on port " + port)
 })
