@@ -1,8 +1,8 @@
+const express = require('express')
 const path = require('path')
-const app = express();
 const hbs = require('hbs')
 
-const express = require('express')
+const app = express();
 const port = process.env.PORT || 3000   //Heroku provide port through process.env.PORT
 
 //setting up directory path
