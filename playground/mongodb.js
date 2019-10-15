@@ -30,3 +30,26 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log(result.ops)
     })
 })
+
+/* ***************
+Following code is coming from the model file.
+*/
+//create instance of the mondel and pass the parameters
+const me = new User({
+    displayName: "John Sina",
+    loginName: 'John',
+    emailAdd: 'john@wn.com',
+    active:true,
+    password: 'abc123'
+})
+
+/*
+To save to database, we use methods on our instance. Save method doesn't take any parameters.
+Save returns a promise.
+*/
+
+me.save().then(() => {
+    console.log(me)
+}).catch((err) => {
+    console.log('Error: ', err)
+})

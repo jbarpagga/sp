@@ -25,6 +25,10 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/users', (req, res) => {
+    
+})
+
 //setting server port
 app.listen(port, () => {
     console.log("Server is running on port " + port)
