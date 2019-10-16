@@ -7,12 +7,19 @@ body {
 
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 .main-content {
     flex-grow: 1;
 }
+
+.user-table {
+    color: green;
+    font-style: italic;
+    size: 10vw;
+}
+
 footer {
    color: #888888;
    border-top: 1px solid #eeeeee;
@@ -27,7 +34,8 @@ header {
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 34px;
+    color: gray;
     margin-bottom: 16px;
 }
 

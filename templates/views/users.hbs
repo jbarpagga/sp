@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+    </div>
+    <div>
+        <form class="user-table">
+            Display Name: <input type="text" size="50px"><br>
+            Login Name: <input type="text" size="50px"><br>
+            Password: <input type="text" size="50px"><br>
+            Email Address: <input type="text" size="50px"><br>
+            Commets: <textarea wrap="hard" rows="4" cols="60"> </textarea><br>
+            Active: <input type="checkbox"><br>
+            Locked Out: <input type="checkbox"><br>
+            <button>Submit</button>
+
+        </form>
+
+    </div>
+    <div>
+        {{>footer}}
+    </div>
+
+
+    <script src='/public/js/clientjs.js'></script>
+</body>
+
+</html>
