@@ -10,16 +10,6 @@ body {
     min-height: 50vh;
 }
 
-.main-content {
-    flex-grow: 1;
-}
-
-.user-table {
-    color: green;
-    font-style: italic;
-    size: 10vw;
-}
-
 footer {
    color: #888888;
    border-top: 1px solid #eeeeee;
@@ -62,6 +52,23 @@ button {
     padding: 8px
 }
 
-#p1 {
- color: maroon;
+#uf-div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+#uf-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#uf-btn {
+    background-color: #45a049; 
+    width: 100%;
 }

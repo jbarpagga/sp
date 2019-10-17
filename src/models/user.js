@@ -32,7 +32,7 @@ const User = mongoose.model('User', {
         required: true,
         trim: true,
         validate(value) {
-            if (value == 'password' || (!validator.isAlphanumeric(value) || value.length < 6)) {
+            if (value.toLowerCase() == 'password' || (!validator.isAlphanumeric(value) || value.length < 6)) {
                 throw new Error('Password should contain letters & digits, it cannot be password and less then 6 characters')
             }
         }
@@ -58,14 +58,6 @@ const User = mongoose.model('User', {
     active: {
         type: Boolean,
         required: true,
-        validate(value) {
-            if (!req.body.checked) {
-                value = false
-            }
-            else {
-                value = true
-            }
-        }
     },
     lockedOut: {
         type: Boolean,

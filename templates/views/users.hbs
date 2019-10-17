@@ -7,19 +7,32 @@
 </head>
 
 <body>
-    <div class="main-content">
+    <div>
         {{>header}}
     </div>
-    <div>
-        <form class="user-table">
-            Display Name: <input type="text" size="50px"><br>
-            Login Name: <input type="text" size="50px"><br>
-            Password: <input type="text" size="50px"><br>
-            Email Address: <input type="text" size="50px"><br>
-            Commets: <textarea wrap="hard" rows="4" cols="60"> </textarea><br>
-            Active: <input type="checkbox"><br>
-            Locked Out: <input type="checkbox"><br>
-            <button>Submit</button>
+    <div id="uf-div">
+        <form class="user-table" action="/users" method="POST" enctype="application/x-www-form-urlencoded">
+            <label>Display Name:</label>
+            <input type="text" id="uf-input" name="displayName" size="50px"><br>
+            <label>Login Name:</label>
+            <input type="text" id="uf-input" name="loginName" size="50px"><br>
+            <label>Password:</label>
+            <input type="text" id="uf-input" name="password" size="50px"><br>
+            <label>Email Address:</label>
+            <input type="text" id="uf-input" name="emailAdd" size="50px"><br>
+            <label>Comments:</label>
+            <textarea wrap="hard" id="uf-input" name="comment" rows="4" cols="60"> </textarea><br>
+             <label>Active:</label>
+            <select name="active" id="uf-input">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select><br>
+            <label>Locked Out:</label>
+            <select name="lockedOut" id="uf-input">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select><br>
+            <button id="uf-btn" onclick="submit">Submit</button>
 
         </form>
 
