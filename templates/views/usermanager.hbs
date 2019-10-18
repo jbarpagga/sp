@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="/css/styles.css">
-    
+
 </head>
 
 <body>
@@ -10,12 +11,26 @@
         {{>header}}
 
         <p>Users + <a href="users">Add User Account</a></p>
-
+        <table id="usertable" border="1" width="100%">             
+            <!-- The Row Number 0 -->
+            <tr>
+                <th>Display Name</th>
+                <th>Login Name</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Locked</th>          
+            </tr>   
+            <tr>
+                <td>{{users}}</td>
+            </tr>                    
+            <!-- End Row Number 0 -->        
+        </table>
+       
     </div>
 
     {{>footer}}
+   <!-- <script type="text/javascript" src="/js/clientjs.js"></script> -->
 
-      <script src='/public/js/clientjs.js'></script>
 </body>
 
 </html>

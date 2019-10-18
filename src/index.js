@@ -25,13 +25,38 @@ app.use(express.static(publicDirPath));
 
 //parse incoming json request
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 //app.use(bodyParser.json())
 
-
 app.get('/usermanager', (req, res) => {
-    res.render('usermanager', {
-        title: "User Manager",
+    User.find().then((users) => {
+        res.send(users)
+        // res.render('usermanager', {
+        //     //dp: users[0].displayName
+        //     })
+    }).catch(() => {
+
+    })
+})
+
+
+//For later use
+app.get('/usermanager/:id', (req, res) => {
+    const _id = req.params.id;
+    console.log(_id)
+    User.findById(_id).then((result) => {
+        if (!result) {
+            return res.status(404).send()
+        }
+        res.send(result)
+    }).catch((e) => {
+        return res.status(500).send()
+    })
+})
+
+app.get('', (req, res) => {
+    res.render('index', {
+        title: "Login Page",
         name: "Jag Barpagga"
     })
 })
@@ -43,16 +68,11 @@ app.get('/users', (req, res) => {
     })
 })
 
-
-app.get('', (req, res) => {
-    res.render('index', {
-        title: "Login Page",
-        name: "Jag Barpagga"
-    })
-})
-
 app.post('/users', (req, res) => {
-    
+    // res.render('usermanager', {
+    //     title: "User Manager",
+    //     name: "Jag Barpagga"
+    // } )
     const user = new User(req.body);
     user.save().then(() => {
         res.send(user)
@@ -64,5 +84,4 @@ app.post('/users', (req, res) => {
 app.listen(port, () => {
     console.log(__dirname)
     console.log("Server is running on port " + port)
-    
 })
