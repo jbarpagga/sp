@@ -6,7 +6,7 @@ mongoose db name is going to be different then mongodb, exp we called it sp-api
 
 */
 
-mongoose.connect('mongodb://127.0.0.1:27017/sp-api', {
+mongoose.connect('mongodb://127.0.0.1:27017/sp', {
     useNewUrlParser: true,
     useCreateIndex: true
 })
@@ -64,6 +64,7 @@ const User = mongoose.model('User', {
         required: true,
         default: true
     },
+    
 })
 
 

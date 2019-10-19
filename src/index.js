@@ -30,28 +30,35 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/usermanager', (req, res) => {
     User.find().then((users) => {
-        res.send(users)
-        // res.render('usermanager', {
-        //     //dp: users[0].displayName
-        //     })
+       //res.send(users)
+       res.render('usermanager', {
+           title: "Users List",
+           name: "JB",
+           user: users
+        })
     }).catch(() => {
 
     })
 })
 
 
-//For later use
-app.get('/usermanager/:id', (req, res) => {
+//For later use. code displayed with both async await and regular way.
+app.get('/usermanager/:id', async (req, res) => {
     const _id = req.params.id;
-    console.log(_id)
-    User.findById(_id).then((result) => {
-        if (!result) {
-            return res.status(404).send()
-        }
-        res.send(result)
-    }).catch((e) => {
-        return res.status(500).send()
-    })
+   try{
+    const user = await User.findById(_id);
+    res.send(user)
+   }catch(e){
+    res.status(500).send("No user found with id " + _id)
+   }
+    // User.findById(_id).then((result) => {
+    //     if (!result) {
+    //         return res.status(404).send()
+    //     }
+    //     res.send(result)
+    // }).catch((e) => {
+    //     return res.status(500).send()
+    // })
 })
 
 app.get('', (req, res) => {
@@ -68,17 +75,15 @@ app.get('/users', (req, res) => {
     })
 })
 
-app.post('/users', (req, res) => {
-    // res.render('usermanager', {
-    //     title: "User Manager",
-    //     name: "Jag Barpagga"
-    // } )
+//async await way of doing things
+app.post('/users', async (req, res) => {
     const user = new User(req.body);
-    user.save().then(() => {
-        res.send(user)
-    }).catch((e) => {
-        res.status(400).send(e)
-    })
+    try {
+       await user.save()
+        res.status(200).send()
+    } catch(e) {
+        res.status(400).send("There is an error, submitting your request")
+    }
 })
 
 app.listen(port, () => {

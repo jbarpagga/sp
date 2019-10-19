@@ -11,18 +11,26 @@
         {{>header}}
 
         <p>Users + <a href="users">Add User Account</a></p>
-        <table id="usertable" border="1" width="100%">             
+        <table id="usertable" border="1" width="100%" class="table">             
             <!-- The Row Number 0 -->
             <tr>
                 <th>Display Name</th>
                 <th>Login Name</th>
                 <th>Email</th>
                 <th>Active</th>
-                <th>Locked</th>          
+                <th>Locked</th> 
+                <th>created_at</th>          
             </tr>   
+            {{#each user}}
             <tr>
-                <td>{{users}}</td>
-            </tr>                    
+                <td>{{this.displayName}}</td>
+                <td>{{this.loginName}}</td>
+                <td>{{this.emailAdd}}</td>
+                <td>{{this.active}}</td>
+                <td>{{this.lockedOut}}</td>
+                <td>{{this.created_at}}</td>
+            </tr>   
+            {{/each}}                 
             <!-- End Row Number 0 -->        
         </table>
        
