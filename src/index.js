@@ -3,8 +3,17 @@ const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
 require('./db/mongoose')
-const User = require('./models/user')
 const bodyParser = require('body-parser')
+const userRouter = require("./routers/user")
+const clientRouter = require('./routers/clientsRouter')
+const ticketsRouter = require('./routers/ticketsRouter')
+const timelogRouter = require('./routers/timelogRouter')
+const kbRouter = require('./routers/kbRouter')
+const reportsRouter = require('./routers/reportsRouter')
+const settingsRouter = require('./routers/settingsRouter')
+const cookieParser= require('cookie-parser')
+
+
 
 
 const app = express()
@@ -19,71 +28,35 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 app.set('view engine', 'hbs');
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
+hbs.registerHelper("dateFormat", function(date) {
+    return (date.getMonth() > 9 ? (date.getMonth() + 1) : (0  + date.getMonth() + 1)) + '/'
+    + (date.getDate() > 9 ? date.getDate(): (0 + getDate())) + '/'
+    + date.getFullYear() 
+})
 
 //Use methods go after set methods
 app.use(express.static(publicDirPath));
 
 //parse incoming json request
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 //app.use(bodyParser.json())
-
-app.get('/usermanager', (req, res) => {
-    User.find().then((users) => {
-       //res.send(users)
-       res.render('usermanager', {
-           title: "Users List",
-           name: "JB",
-           user: users
-        })
-    }).catch(() => {
-
-    })
-})
-
-
-//For later use. code displayed with both async await and regular way.
-app.get('/usermanager/:id', async (req, res) => {
-    const _id = req.params.id;
-   try{
-    const user = await User.findById(_id);
-    res.send(user)
-   }catch(e){
-    res.status(500).send("No user found with id " + _id)
-   }
-    // User.findById(_id).then((result) => {
-    //     if (!result) {
-    //         return res.status(404).send()
-    //     }
-    //     res.send(result)
-    // }).catch((e) => {
-    //     return res.status(500).send()
-    // })
-})
+app.use(bodyParser.urlencoded({ extended: true }))
+//app.use(express.urlencoded({extended: false})
+//this is needed to route from routers folder using router
+app.use(userRouter)
+app.use(clientRouter)
+app.use(ticketsRouter)
+app.use(timelogRouter)
+app.use(kbRouter)
+app.use(reportsRouter)
+app.use(settingsRouter)
+app.use(cookieParser())
 
 app.get('', (req, res) => {
-    res.render('index', {
-        title: "Login Page",
+    res.render('login', {
+        title: 'Login Page',
         name: "Jag Barpagga"
     })
-})
-
-app.get('/users', (req, res) => {
-    res.render('users', {
-        title: "Add User...",
-        name: "Jag Barpagga"
-    })
-})
-
-//async await way of doing things
-app.post('/users', async (req, res) => {
-    const user = new User(req.body);
-    try {
-       await user.save()
-        res.status(200).send()
-    } catch(e) {
-        res.status(400).send("There is an error, submitting your request")
-    }
 })
 
 app.listen(port, () => {

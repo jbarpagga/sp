@@ -11,21 +11,21 @@
         {{>header}}
     </div>
     <div id="uf-div">
-        <form class="user-table" action="/users" method="POST" enctype="application/x-www-form-urlencoded">
-            <label>Display Name:</label>
-            <input type="text" id="uf-input" name="displayName" size="50px"><br>
+        <form class="user-table" action="/adduser" method="POST" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="_id" value="{{user._id}}" <label>Display Name:</label>
+            <input type="text" id="uf-input" name="displayName" size="50px" value="{{user.displayName}}"><br>
             <label>Login Name:</label>
-            <input type="text" id="uf-input" name="loginName" size="50px"><br>
+            <input type="text" id="uf-input" name="loginName" size="50px" value="{{user.loginName}}"><br>
             <label>Password:</label>
             <input type="text" id="uf-input" name="password" size="50px"><br>
             <label>Email Address:</label>
-            <input type="text" id="uf-input" name="emailAdd" size="50px"><br>
+            <input type="text" id="uf-input" name="emailAdd" size="50px" value="{{user.emailAdd}}"><br>
             <label>Comments:</label>
-            <textarea wrap="hard" id="uf-input" name="comment" rows="4" cols="60"> </textarea><br>
-             <label>Active:</label>
+            <textarea wrap="hard" id="uf-input" name="comment" rows="4" cols="60"> {{user.comment}} </textarea><br>
+            <label>Active:</label>
             <select name="active" id="uf-input">
-                <option value="true">true</option>
-                <option value="false">false</option>
+                <option value="{{user.active}}">true</option>
+                <option value="{{user.active}}">false</option>
             </select><br>
             <label>Locked Out:</label>
             <select name="lockedOut" id="uf-input">

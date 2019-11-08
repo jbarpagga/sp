@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="/css/styles.css">
-    
+    <img src="/img/logo.png" class="portrait">
+    <h1>{{title}}.</h1> 
+    <h3>Created By {{name}}</h3>
 </head>
 
 <body>
     <div class="main-content">
-        {{>header}}
-
         <p>Login to client Database</p>
 
-        <form action="/index" method="POST" enctype="application/x-www-form-urlencoded">
+        <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
            Email Address: <input type="text" name="emailAdd" placeholder="Email Address">
            Password: <input type="text" name="password" placeholder="Login Password">
            <button onclick="submit">Login</button>
@@ -20,7 +20,7 @@
         
     </div>
 
-    {{>footer}}
+   
 
       <script src='/public/js/clientjs.js'></script>
 </body>

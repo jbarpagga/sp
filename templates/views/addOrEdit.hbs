@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+    </div>
+    <form method="POST">
+        <div class="user-table">
+            <label>Display Name</label>
+            <input type="text" id="uf-input" name="displayName" size="50px" placeholder="Display Name">
+        </div>
+
+        <div class="user-table">
+            <label>Login Name</label>
+            <input type="text" id="uf-input" name="loginName" size="50px" placeholder="Login Name">
+        </div>
+        <div class="user-table">
+            <label>Password</label>
+            <input type="text" id="uf-input" name="password" size="50px" placeholder="Password">
+        </div>
+        <div class="user-table">
+            <label>Email Address</label>
+            <input type="text" id="uf-input" name="emailAdd" size="50px" placeholder="Email Address">
+        </div>
+        <div>
+            <label>Comments</label>
+            <textarea wrap="hard" id="uf-input" name="comment" rows="4" cols="60"></textarea><br>
+        </div>
+        <div>
+            <label>Active:</label>
+            <select name="active" id="uf-input">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+        </div>
+        <div>
+            <label>Locked Out</label>
+            <select name="lockedOut" id="uf-input">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+        </div>
+        <div>
+            <button id="uf-btn" onclick="submit">Submit</button>
+        </div>
+    </form>
+    {{>footer}}
+
+    <script src='/public/js/clientjs.js'></script>
+</body>
+
+</html>
