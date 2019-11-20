@@ -11,8 +11,9 @@
         {{>header}}
     </div>
     <div id="uf-div">
-        <form class="user-table" action="/adduser" method="POST" enctype="application/x-www-form-urlencoded">
-            <input type="hidden" name="_id" value="{{user._id}}" <label>Display Name:</label>
+        <form class="user-table" action="/addedituser/" method="POST" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="idField" value="{{user._id}}">
+            <label>Display Name:</label>
             <input type="text" id="uf-input" name="displayName" size="50px" value="{{user.displayName}}"><br>
             <label>Login Name:</label>
             <input type="text" id="uf-input" name="loginName" size="50px" value="{{user.loginName}}"><br>
@@ -24,15 +25,19 @@
             <textarea wrap="hard" id="uf-input" name="comment" rows="4" cols="60"> {{user.comment}} </textarea><br>
             <label>Active:</label>
             <select name="active" id="uf-input">
-                <option value="{{user.active}}">true</option>
-                <option value="{{user.active}}">false</option>
+                <option>{{user.active}}</option>
+                <option>true</option>
+                <option>false</option>
             </select><br>
             <label>Locked Out:</label>
             <select name="lockedOut" id="uf-input">
-                <option value="true">true</option>
-                <option value="false">false</option>
+                <option>{{user.lockedOut}}</option>
+                <option>true</option>
+                <option>false</option>
             </select><br>
-            <button id="uf-btn" onclick="submit">Submit</button>
+            <button id="uf-btn-submit" onclick="submit">Submit</button>
+            <button id="uf-btn-cancel" onclick="cancel">Cancel</button>
+            <button id="uf-btn-del" onclick="submit">Del</button>
 
         </form>
 

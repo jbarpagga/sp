@@ -6,12 +6,12 @@
 - database doesnt need to be created in advance. const db = client.db(databaseName) creates on fly.
 */
 
-
+//const User = require('../src/models/userMod')
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient;
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
-const databaseName = 'sp'
+const databaseName = 'sptest'
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if(error) {
@@ -29,7 +29,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
         console.log(result.ops)
     })
-})
+ })
 
 /* ***************
 Following code is coming from the model file.

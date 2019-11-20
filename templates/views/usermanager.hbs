@@ -10,7 +10,7 @@
     <div class="main-content">
         {{>header}}
 
-        <p>Users + <a href="adduser">Add User Account</a></p>
+        <p>Users + <a href="addedituser">Add User Account</a></p>
         <table id="usertable" border="1" width="100%" class="table">             
             <!-- The Row Number 0 -->
             <tr>
@@ -26,21 +26,19 @@
             </tr>   
             {{#each user}}
             <tr>
-                <td><a href="adduser/{{this._id}}">{{this.displayName}}</a></td>
+                <td>{{this.displayName}}</td>
                 <td>{{this.loginName}}</td>
                 <td>{{this.emailAdd}}</td>
                 <td>{{this.active}}</td>
                 <td>{{this.lockedOut}}</td>
-                <td>{{this.createdAt}}</td>
-                <td>{{this.updatedAt}}</td>
-                <td>Edit</td>
-                <td>Delete</td>
-                
+                <td>{{dateFormat this.createdAt}}</td>
+                <td>{{dateFormat this.updatedAt}}</td>
+                <td><a href="addedituser/{{this._id}}">Edit</a></td>
+                <td><a href="deluser/{{this._id}}">Delete</a></td>                
             </tr>   
             {{/each}}                 
             <!-- End Row Number 0 -->        
         </table>
-       
     </div>
 
     {{>footer}}

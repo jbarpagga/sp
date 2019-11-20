@@ -87,7 +87,17 @@ tr:nth-child(even){
     box-sizing: border-box;
 }
 
-#uf-btn {
+#uf-btn-submit {
     background-color: #45a049; 
+    width: 100%;
+}
+
+#uf-btn-cancel {
+    background-color: #80a045; 
+    width: 100%;
+}
+
+#uf-btn-del {
+    background-color: #e71414ef; 
     width: 100%;
 }
